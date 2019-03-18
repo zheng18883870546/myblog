@@ -1,0 +1,80 @@
+
+{% extends 'web/base.html'%}
+
+{% block title %}
+    首页_郑晓卫个人博客 - 一个站在Python前端设计之路小白的个人博客网站
+{% endblock %}
+
+{% block meta %}
+    <meta name="keywords" content="个人博客,郑晓卫个人博客,个人博客模板" />
+    <meta name="description" content="郑晓卫个人博客，是一个站在web前端设计之路的小白程序员个人网站。" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% endblock %}
+
+{% block css %}
+    <link href="/static/web/css/base.css" rel="stylesheet">
+    <link href="/static/web/css/index.css" rel="stylesheet">
+    <link href="/static/web/css/m.css" rel="stylesheet">
+<style>
+
+body{
+    background: url(/static/web/images/15.jpg);
+    background-size: cover;
+}
+
+
+</style>
+
+{% endblock %}
+
+{% block js %}
+    <script src="/static/web/js/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/static/web/js/comm.js"></script>
+    <script src="/static/web/js/modernizr.js"></script>
+
+{% endblock %}
+
+{% block header %}
+    <header class="header-navigation" id="header">
+        <nav><div class="logo"><a href="{{ url_for('web.index') }}">郑晓卫个人博客</a></div>
+        <h2 id="mnavh"><span class="navicon"></span></h2>
+        <ul id="starlist">
+        <li><a href="{{ url_for('web.index') }}">网站首页</a></li>
+        <li><a href="{{ url_for('web.share') }}">我的相册</a></li>
+        <!--<li><a href="">我的日记</a></li>-->
+        <!--<li><a href="">留言</a></li>-->
+        <li><a href="{{ url_for('web.content') }}">内容页</a></li>
+        <li><a href="{{ url_for('web.about') }}">关于我</a></li>
+        </ul>
+        </nav>
+    </header>
+{% endblock %}
+
+{% block about %}
+    <div class="about_me">
+        <h2>关于我</h2>
+        <ul>
+            <i><img src="/static/web/images/p1.jpg"></i>
+            <p><b>郑晓卫</b> 男，一个90后草根男站长！17年入行。一直虚心学习python技术，一边工作一边积累经验，分享一些个人学习内容，以及学习心得。</p>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block search %}
+<div class="search">
+    <form action="/web/search/" method="post" name="searchform" id="searchform">
+        <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字词" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
+        <input name="show" value="title" type="hidden">
+        <input name="tempid" value="1" type="hidden">
+        <input name="tbname" value="news" type="hidden">
+        <input name="Submit" class="input_submit" value="搜索" type="submit">
+    </form>
+</div>
+{% endblock %}
+
+{% block bottom %}
+<footer>
+  <p>Design by <a href="/" target="_blank">郑晓卫个人博客</a> <a href="/">陕ICP备11002373号-1</a></p>
+</footer>
+<a href="#" class="cd-top">Top</a>
+{% endblock %}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+        {% block meta %}
+        {% endblock %}
+
+        {% block css %}
+        {% endblock %}
+
+        {% block js %}
+        {% endblock %}
+
+</head>
+<body>
+    <h1></h1>
+    {% block header %}
+    {% endblock %}
+    <article>
+        <aside class="l_box">
+            {% block about %}
+            {% endblock %}
+
+            {% block search %}
+            {% endblock %}
+        </aside>
+
+        {% block content %}
+        {% endblock %}
+
+
+    </article>
+    {% block bottom %}
+    {% endblock %}
+</body>
+</html>

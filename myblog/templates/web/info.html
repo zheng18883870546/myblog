@@ -1,0 +1,50 @@
+{% extends 'web/base_main.html' %}
+
+{% block search %}
+    {{ super() }}
+        <div class="fenlei">
+            <h2>文章分类</h2>
+            {% for type in types %}
+            <ul>
+                <li><a href="/">{{ type.t_name }}</a></li>
+            </ul>
+            {% endfor %}
+        </div>
+        <div class="links">
+            <h2>友情链接</h2>
+        </div>
+        <div class="guanzhu">
+        <h2>关注我 么么哒</h2>
+        <ul>
+            <img src="/static/web/images/wx.jpg">
+        </ul>
+        </div>
+{% endblock %}
+
+{% block content %}
+  <main>
+    <div class="infosbox">
+      <div class="newsview">
+        <h3 class="news_title">{{ article.title }}</h3>
+        <div class="bloginfo">
+          <ul>
+            <li class="lmname"><a href="/">{{ article.t_name }}</a></li>
+            <li class="timer">{{ article.create_time }}</li>
+          </ul>
+        </div>
+        <div class="tags"><a href="" target="_blank">个人博客</a> &nbsp; <a href="" target="_blank">基础学习</a></div>
+        <div class="news_about"><strong>简介</strong>每天工作回家后就能访问自己的网站，一边听着音乐，一边写写文章。</div>
+        <div class="news_con">
+          {{ article.content | safe }}
+          &nbsp; </div>
+      </div>
+      <div class="share">
+        <p class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=3&amp;id=19&amp;dotop=1&amp;doajax=1&amp;ajaxarea=diggnum','EchoReturnedText','GET','');"> 很赞哦！ </a>(<b id="diggnum"><script type="text/javascript" src="/e/public/ViewClick/?classid=2&id=20&down=5"></script>{{ article.id }}</b>)</p>
+      </div>
+      <div class="nextinfo">
+        <p>上一篇：<a href="">{{ n_article.title }}</a></p>
+        <p>下一篇：<a href="/news/life/"></a><a href="{{ url_for('web.index')}}">返回列表</a></p>
+      </div>
+      </div>
+  </main>
+{% endblock %}

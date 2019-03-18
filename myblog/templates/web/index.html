@@ -1,0 +1,67 @@
+{% extends 'web/base_main.html' %}
+
+{% block search %}
+{{ super() }}
+
+<div class="fenlei">
+    <h2>文章分类</h2>
+    {% for type in types %}
+    <ul>
+        <li><a href="{{ url_for('web.category',id=type.id)}}">{{ type.t_name }}</a></li>
+    </ul>
+    {% endfor %}
+</div>
+<div class="links">
+    <h2>友情链接<a href="http://47.100.245.103/web/" target="_top">leejun</a></h2>
+</div>
+<div class="guanzhu">
+<h2>关注我 么么哒</h2>
+<ul>
+    <img src="/static/web/images/wx.jpg">
+</ul>
+</div>
+{% endblock %}
+
+{% block content %}
+    <main class="r_box">
+        {{ error }}
+            {% for article in articles %}
+
+                {% if article.id % 10 == 0 %}
+                    <li><i><a href="/"><img src="/static/web/images/10.jpg"></a></i>
+                {% endif %}
+
+                {% if article.id % 10 != 0 %}
+                    <li><i><a href="/"><img src="/static/web/images/{{ article.id%10 }}.jpg"></a></i>
+                {% endif%}
+
+                <h3><a href="{{ url_for('web.info',id=article.id)}}">{{ article.title }}</a></h3>
+                <p>{{ article.desc }}</p>
+
+                    </li>
+         {% endfor %}
+        <div class="paging">
+        {% if paginate.page%}
+        <a>当前第{{ paginate.page }}页</a>
+        {% endif %}
+
+        {% if paginate.has_prev %}
+            <a href="/web/index/?page={{ paginate.prev_num }}">上一页</a>
+        {% endif %}
+
+        {% if paginate.pages %}
+            {% for i in range(1,paginate.pages+1) %}
+                <a href="/web/index/?page={{ i }}"> {{ i }}</a>
+            {% endfor %}
+        {% endif %}
+
+        {% if paginate.has_next %}
+            <a href="/web/index/?page={{ paginate.next_num }}">下一页</a>
+        {% endif %}
+            <a href="/web/index/?page={{ paginate.pages }}">最后一页</a>
+
+        </div>
+
+    </main>
+{% endblock %}
+

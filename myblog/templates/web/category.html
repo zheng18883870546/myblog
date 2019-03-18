@@ -1,0 +1,46 @@
+{% extends 'web/base_main.html' %}
+
+{% block search %}
+    {{ super() }}
+        <div class="fenlei">
+            <h2>文章分类</h2>
+            {% for type in types %}
+            <ul>
+                <li><a href="{{ url_for('web.category',id=type.id)}}">{{ type.t_name }}</a></li>
+            </ul>
+            {% endfor %}
+        </div>
+        <div class="links">
+            <h2>友情链接</h2>
+        </div>
+        <div class="guanzhu">
+        <h2>关注请加我微信</h2>
+        <ul>
+            <img src="/static/web/images/wx.jpg">
+        </ul>
+        </div>
+{% endblock %}
+
+{% block content %}
+  <main class="r_box">
+        {{ error }}
+    {% for article in articles %}
+        {% if article.id %10 == 0 %}
+            <li><i><a href="/"><img src="/static/web/images/10.jpg"></a></i>
+            <h3><a href="{{ url_for('web.info',id=article.id)}}">{{ article.title }}</a></h3>
+            <p>{{ article.desc }}</p>
+            </li>
+        {% endif%}
+
+        {% if article.id %10 != 0 %}
+            <li><i><a href="/"><img src="/static/web/images/{{ article.id%10 }}.jpg"></a></i>
+            <h3><a href="{{ url_for('web.info',id=article.id)}}">{{ article.title }}</a></h3>
+            <p>{{ article.desc }}</p>
+            </li>
+        {% endif %}
+    {% endfor %}
+
+
+  </main>
+{% endblock %}
+

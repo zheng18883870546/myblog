@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>首页_杨青个人博客 - 一个站在web前端设计之路的女技术员个人博客网站</title>
+<meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青" />
+<meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/static/web/css/base.css" rel="stylesheet">
+<link href="/static/web/css/index.css" rel="stylesheet">
+<link href="/static/web/css/m.css" rel="stylesheet">
+<!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+<script src="/static/web/js/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/static/web/js/comm.js"></script>
+<script src="/static/web/js/scrollReveal.js"></script>
+</head>
+<body>
+<header class="header-navigation" id="header">
+    <nav><div class="logo"><a href="{{ url_for('web.index') }}">郑晓卫个人博客</a></div>
+        <h2 id="mnavh"><span class="navicon"></span></h2>
+        <ul id="starlist">
+        <li><a href="{{ url_for('web.index') }}">网站首页</a></li>
+        <li><a href="{{ url_for('web.share') }}">我的相册</a></li>
+        <!--<li><a href="">我的日记</a></li>-->
+        <!--<li><a href="">留言</a></li>-->
+        <li><a href="{{url_for('web.content')}}">内容页</a></li>
+        <li><a href="{{ url_for('web.about') }}">关于我</a></li>
+        </ul>
+    </nav>
+</header>
+<article>
+        <div class="picbox">
+            {% for i in range(1,14) %}
+
+            <ul>
+                <li data-scroll-reveal="enter bottom over 1s" ><i><img src="/static/web/images/{{ i }}.jpg"></i>
+                </li>
+
+            </ul>
+            {% endfor %}
+        </div>
+    </article>
+
+<script>
+	if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+		(function(){
+			window.scrollReveal = new scrollReveal({reset: true});
+		})();
+	};
+</script>
+</body>
+</html>
